@@ -1,0 +1,3 @@
+all the class files will be stored in folder: build/classes after compiling
+jar file will be stored in folder lib
+api document will be stored in folder doc
