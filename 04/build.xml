@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="appTest" default="run" basedir=".">
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="classes" location="${build}/classes" />
+	<property name="locale" value="en_US" />
+
+	<target name="delete">
+		<delete dir="${classes}" />
+		<delete dir="${basedir}/lib"/>
+	</target>
+
+	<target name="create" depends="delete">
+		<mkdir dir="${classes}" />
+		<copy todir="${classes}" file="kandinsky.jpg">
+		</copy>
+	</target>
+
+	<target name="compile" depends="create">
+		<javac includeantruntime="false" srcdir="${src}" destdir="${classes}" includes="**/*.java">
+		</javac>
+	</target>
+
+	<target name="api-doc" depends="compile">
+		<delete dir="${basedir}/doc" />
+		<mkdir dir="${basedir}/doc" />
+		<javadoc destdir="${basedir}/doc" windowtitle="AppDraw API" locale="${locale}" author="true" version="true" use="true">
+			<fileset dir="." />
+		</javadoc>
+	</target>
+
+	<target name="run" depends="compile,api-doc, jar">
+		<java classname="AppDrawEvent" fork="true">
+			<arg value="kandinsky.jpg" />
+			<classpath>
+				<pathelement path="${classes}" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${basedir}/lib/AppDrawEvent.jar" basedir="${classes}">
+		</jar>
+	</target>
+
+</project>
+

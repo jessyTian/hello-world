@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"AppDrawEvent"},{"p":"<Unnamed>","l":"GrayScale"},{"p":"<Unnamed>","l":"Original"},{"p":"<Unnamed>","l":"Pattern"},{"l":"所有类","url":"allclasses-index.html"}]
